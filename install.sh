@@ -23,6 +23,6 @@ rm -rf fonts
 
 # Create Alacritty configuration file
 mkdir --parents ~/.config/alacritty
-cp alacrity.yml ~/.config/alacritty
+cp alacritty.yml ~/.config/alacritty
 
 echo Finished!
