@@ -5,4 +5,4 @@ The purpose of this repository is to hold various configuration and other files 
 
 ## Notes
 
-
+Make sure you install a powerline-compatible font on whatever computer you're using.
