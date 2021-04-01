@@ -4,6 +4,7 @@ echo Installing configuration files...
 
 # Copy dotfiles to the correct directories
 cp .vimrc ~/
+cp .tmux.conf ~/
 
 # Install plug.vim
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
