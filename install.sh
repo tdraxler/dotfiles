@@ -10,6 +10,14 @@ cp .tmux.conf ~/
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
       https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
+# Install zsh and oh my zsh
+echo Installing zsh
+sudo apt install zsh
+
+sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+
+cp .zshrc ~/
+
 # The next line is copied from powerline/fonts on github
 # It installs some fonts that are compatible with powerline
 

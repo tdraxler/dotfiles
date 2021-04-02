@@ -12,11 +12,17 @@ set expandtab
 " Show partial command in status line
 set showcmd
 
+" Avoid messing with indentation when pasting
+" set paste
+
+" No need to stay compatible with vi
+set nocompatible
+
 " Plug plugins
 call plug#begin('~/.vim/plugged')
 
 " Color schemes"
-Plug 'sainnhe/sonokai'
+Plug 'ghifarit53/tokyonight-vim'
 Plug 'sjl/badwolf'
 
 Plug 'sheerun/vim-polyglot'
@@ -28,9 +34,16 @@ Plug 'vim-airline/vim-airline'
 Plug 'psliwka/vim-smoothie'
 call plug#end()
 
-let g:airline#extensions#branch#enabled = 1
-colorscheme sonokai
+let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+
+set termguicolors
+let g:tokyonight_style = 'night'
+let g:tokyonight_enable_italic = 1
+colorscheme tokyonight
+
 " let g:sonokai_disable_italic_comment = 1
+let g:airline#extensions#branch#enabled = 1
 " Syntax highlighting
 syntax on
 
@@ -49,6 +62,7 @@ set encoding=utf-8
 
 " Set status line display
 let g:airline_powerline_fonts = 1  " Fancy airline symbols
+let g:airline_theme = "tokyonight"
 " set statusline=%F%m%r%h%w\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ [POS=%l,%v][%p%%]\ [BUFFER=%n]\ %{strftime('%c')}
 
 " Make comments italic
@@ -59,8 +73,6 @@ let g:airline_powerline_fonts = 1  " Fancy airline symbols
 " Show cursor position
 set ruler
 
-" No need to stay compatible with vi
-set nocompatible
 
 " Search into subfolders. Good for tab-completion
 set path+=**
