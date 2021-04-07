@@ -22,7 +22,7 @@ set nocompatible
 call plug#begin('~/.vim/plugged')
 
 " Color schemes"
-Plug 'ghifarit53/tokyonight-vim'
+Plug 'joshdick/onedark.vim'
 Plug 'sjl/badwolf'
 
 Plug 'sheerun/vim-polyglot'
@@ -38,9 +38,8 @@ let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
 let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
 
 set termguicolors
-let g:tokyonight_style = 'night'
-let g:tokyonight_enable_italic = 1
-colorscheme tokyonight
+let g:onedark_terminal_italics = 1
+colorscheme onedark
 
 " let g:sonokai_disable_italic_comment = 1
 let g:airline#extensions#branch#enabled = 1
@@ -62,7 +61,7 @@ set encoding=utf-8
 
 " Set status line display
 let g:airline_powerline_fonts = 1  " Fancy airline symbols
-let g:airline_theme = "tokyonight"
+let g:airline_theme = "onedark"
 " set statusline=%F%m%r%h%w\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ [POS=%l,%v][%p%%]\ [BUFFER=%n]\ %{strftime('%c')}
 
 " Make comments italic
@@ -87,3 +86,9 @@ set wildignore=*/node_modules/*,*/.git/*
 
 " Creates `tags` file. You'll need ctags for this
 command! MakeTags !ctags -R .
+
+
+" Don't conceal characters in Markdown files
+let g:vim_json_syntax_conceal = 0
+let g:vim_markdown_conceal = 0
+let g:vim_markdown_conceal_code_blocks = 0

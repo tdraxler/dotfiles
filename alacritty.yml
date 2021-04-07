@@ -8,6 +8,10 @@ window:
   # Spread additional padding evenly around the terminal content.
   dynamic_padding: true
 
+  dimensions:
+    columns: 80
+    lines: 30
+
   # Startup Mode (changes require restart)
   # startup_mode: Fullscreen
 
@@ -60,7 +64,7 @@ font:
    y: 0
 
   # Better font rendering for mac
-  use_thin_strokes: false
+  use_thin_strokes: true
   draw_bold_text_with_bright_colors: true
 
 selection:
@@ -78,6 +82,30 @@ live_config_reload: true
 
 dynamic_title: true
 
+scrolling:
+  # How many lines of scrollback to keep,
+  # '0' will disable scrolling.
+  history: 10000
+
+  # Number of lines the viewport will move for every line
+  # scrolled when scrollback is enabled (history > 0).
+  multiplier: 3
+
+  # Faux Scrolling
+  #
+  # The `faux_multiplier` setting controls the number
+  # of lines the terminal should scroll when the alternate
+  # screen buffer is active. This is used to allow mouse
+  # scrolling for applications like `man`.
+  #
+  # To disable this completely, set `faux_multiplier` to 0.
+  faux_multiplier: 3
+
+  # Automatically scroll to the bottom when new text is written
+  # to the terminal.
+  auto_scroll: false
+
+
 # Setup some amazing custom key bindings here - Best thing is you can setup key bindings
 # using Mac's 'command' to control your tmux.
 # A great reference: https://arslan.io/2018/02/05/gpu-accelerated-terminal-alacritty/#make-alacritty-feel-like-iterm2
@@ -90,35 +118,68 @@ dynamic_title: true
 #   - { key: Key6, mods: Control, chars: "\x1e" }
 
 
-# colors (Tokyo Night)
-# Source: https://github.com/zatchheems/tokyo-night-alacritty-theme
 colors:
   # Default colors
   primary:
-    background: '0x1a1b26'
-    foreground: '0xa9b1d6'
+    background: '0x1e2127'
+    foreground: '0xcbd2cf'
+    # foreground: '0xabb2bf'
+
+    # Bright and dim foreground colors
+    #
+    # The dimmed foreground color is calculated automatically if it is not present.
+    # If the bright foreground color is not set, or `draw_bold_text_with_bright_colors`
+    # is `false`, the normal foreground color will be used.
+    #dim_foreground: '0x9a9a9a'
+    bright_foreground: '0xe6efff'
+
+  # Cursor colors
+  #
+  # Colors which should be used to draw the terminal cursor. If these are unset,
+  # the cursor color will be the inverse of the cell color.
+  #cursor:
+  #  text: '0x000000'
+  #  cursor: '0xffffff'
 
   # Normal colors
   normal:
-    black:   '0x32344a'
-    red:     '0xf7768e'
-    green:   '0x9ece6a'
-    yellow:  '0xe0af68'
-    blue:    '0x7aa2f7'
-    magenta: '0xad8ee6'
-    cyan:    '0x449dab'
-    white:   '0x787c99'
+    black:   '0x1e2127'
+    red:     '0xe06c75'
+    green:   '0x98D379'
+    #green:   '0x98c379'
+    yellow:  '0xd19a66'
+    blue:    '0x61afef'
+    magenta: '0xc678dd'
+    cyan:    '0x56b6c2'
+    white:   '0xb2b7c1'
+    # white:   '0x828791'
 
   # Bright colors
   bright:
-    black:   '0x444b6a'
-    red:     '0xff7a93'
-    green:   '0xb9f27c'
-    yellow:  '0xff9e64'
-    blue:    '0x7da6ff'
-    magenta: '0xbb9af7'
-    cyan:    '0x0db9d7'
-    white:   '0xacb0d0'
+    black:   '0x5c6370'
+    red:     '0xe06c75'
+    green:   '0x98E379'
+    yellow:  '0xd19a66'
+    blue:    '0x61afef'
+    magenta: '0xc678dd'
+    cyan:    '0x56b6c2'
+    white:   '0xe6efff'
+
+  # Dim colors
+  #
+  # If the dim colors are not set, they will be calculated automatically based
+  # on the `normal` colors.
+  dim:
+    black:   '0x1e2127'
+    red:     '0xe06c75'
+    green:   '0x98c379'
+    yellow:  '0xd19a66'
+    blue:    '0x61afef'
+    magenta: '0xc678dd'
+    cyan:    '0x56b6c2'
+    white:   '0x828791'
+
+
 key_bindings:
   # (Windows, Linux, and BSD only)
   #  - { key: V,        mods: Control|Shift, action: Paste            }
@@ -128,4 +189,7 @@ key_bindings:
   - { key: Equals,   mods: Control,       action: IncreaseFontSize }
   - { key: Plus,     mods: Control,       action: IncreaseFontSize }
   - { key: Minus,    mods: Control,       action: DecreaseFontSize }
-
+  - { key: PageUp,   mods: Shift,         action: ScrollPageUp   }
+  - { key: PageDown, mods: Shift,         action: ScrollPageDown }
+  - { key: End,      mods: Shift,         action: ScrollToBottom }
+  - { key: Home,     mods: Shift,         action: ScrollToTop    }
